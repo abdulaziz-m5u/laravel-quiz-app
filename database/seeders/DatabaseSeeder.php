@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeed::class);
         $this->call(UserSeedPivot::class);
         $this->call(RoleSeedPivot::class);
+        $this->call(CategorySeed::class);
+        $this->call(QuestionSeed::class);
+        $this->call(OptionSeed::class);
     }
 }

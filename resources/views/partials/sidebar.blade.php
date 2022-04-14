@@ -31,5 +31,30 @@
                 </div>
             </li>
 
+            <li class="nav-item {{ request()->is('admin/categories') || request()->is('admin/categories') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.categories.index') }}">
+                    <i class="fas fa-cogs"></i>
+                    <span>{{ __('Category') }}</span></a>
+            </li>
+
+            <li class="nav-item {{ request()->is('admin/questions') || request()->is('admin/questions') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.questions.index') }}">
+                    <i class="fas fa-cogs"></i>
+                    <span>{{ __('Question') }}</span></a>
+            </li>
+
+            <li class="nav-item {{ request()->is('admin/options') || request()->is('admin/options') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.options.index') }}">
+                    <i class="fas fa-cogs"></i>
+                    <span>{{ __('Option') }}</span></a>
+            </li>
+
+            <li class="nav-item {{ request()->is('admin/results') || request()->is('admin/results') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.results.index') }}">
+                    <i class="fas fa-cogs"></i>
+                    <span>{{ __('Result') }}</span></a>
+            </li>
+
+
 
         </ul>
