@@ -39,6 +39,19 @@
                             @endforeach
                         </select>
                     </div>
+
+                    @for($i=1;$i<=4;$i++)
+                    <div class="form-group">
+                        <label for="question_text">Option {{ $i }}</label>
+                        <textarea class="form-control" id="question_text" placeholder="Option {{ $i }}" name="option[]"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="question_text">Point To Answer {{ $i }}</label>
+                        <input type="text" class="form-control" id="question_text" placeholder="Point To Answer {{ $i }}" name="point[]" value="0" />
+                    </div>
+                    @endfor
+
+
                     <button type="submit" class="btn btn-primary btn-block">{{ __('Save') }}</button>
                 </form>
             </div>

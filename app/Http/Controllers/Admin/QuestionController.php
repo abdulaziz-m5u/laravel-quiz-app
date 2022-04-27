@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\QuestionRequest;
 use App\Models\Category;
+use App\Models\Option;
 
 class QuestionController extends Controller
 {
@@ -28,7 +29,16 @@ class QuestionController extends Controller
 
     public function store(QuestionRequest $request): RedirectResponse
     {
-        Question::create($request->validated());
+        $question = Question::create($request->validated());
+        for($optionIndex=0;$optionIndex<=(count($request->option)-1);$optionIndex++){
+            Option::create(
+                [
+                    'question_id'   =>  $question->id,
+                    'option_text'   =>  $request->option[$optionIndex],
+                    'points'        =>  $request->point[$optionIndex]
+                ]
+            );
+        }
 
         return redirect()->route('admin.questions.index')->with([
             'message' => 'successfully created !',
@@ -41,16 +51,24 @@ class QuestionController extends Controller
         return view('admin.questions.show', compact('question'));
     }
 
-    public function edit(Question $question): View
+    public function edit($id): View
     {
         $categories = Category::all()->pluck('name', 'id');
-
+        $question = Question::with('questionOptions')->find($id);
         return view('admin.questions.edit', compact('question', 'categories'));
     }
 
     public function update(QuestionRequest $request, Question $question): RedirectResponse
     {
         $question->update($request->validated());
+        for($optionIndex=0;$optionIndex<=(count($request->option)-1);$optionIndex++){
+
+            $option = Option::find($request->id[$optionIndex]);
+            $option->update([
+                'option_text'   =>  $request->option[$optionIndex],
+                'points'        =>  $request->point[$optionIndex]
+            ]);
+        }
 
         return redirect()->route('admin.questions.index')->with([
             'message' => 'successfully updated !',
