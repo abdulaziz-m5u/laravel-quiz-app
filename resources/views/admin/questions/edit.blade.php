@@ -38,6 +38,20 @@
                             @endforeach
                         </select>
                     </div>
+                    @php $i=1 @endphp
+                    @foreach($question->questionOptions as $question)
+                    <div class="form-group">
+                        <label for="question_text">Option {{ $i }}</label>
+                        <input type="hidden" name="id[]" value="{{ $question->id}}">
+                        <textarea class="form-control" id="question_text" placeholder="1" name="option[]"> {{ $question->option_text }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="question_text">Point To Answer {{ $i }}</label>
+                        <input type="text" class="form-control" id="question_text" placeholder="Point To Answer 1" name="point[]" value="{{ $question->points }}" />
+                    </div>
+                    @php $i++ @endphp
+                    @endforeach
+
                     <button type="submit" class="btn btn-primary btn-block">{{ __('Save')}}</button>
                 </form>
             </div>

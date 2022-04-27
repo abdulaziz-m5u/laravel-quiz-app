@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Faker\Factory;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Str;
 class CategorySeed extends Seeder
 {
     /**
@@ -21,6 +21,7 @@ class CategorySeed extends Seeder
         {
             Category::insert([
                 'id' => $id,
+                'slug'=>Str::random(32),
                 'name' => $faker->sentence(3)
             ]);
         }
