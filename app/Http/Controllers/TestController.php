@@ -10,7 +10,7 @@ use App\Http\Requests\StoreTestRequest;
 
 class TestController extends Controller
 {
-    public function index()
+    public function index($slug)
     {
         $categories = Category::with(['categoryQuestions' => function ($query) {
                 $query->inRandomOrder()
@@ -19,6 +19,7 @@ class TestController extends Controller
                     }]);
             }])
             ->whereHas('categoryQuestions')
+            ->where('slug',$slug)
             ->get();
 
         return view('client.test', compact('categories'));

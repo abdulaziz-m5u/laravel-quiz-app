@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth'], function() {
    
-    Route::get('test',[\App\Http\Controllers\TestController::class, 'index'])->name('client.test');
+    Route::get('test/{slug}',[\App\Http\Controllers\TestController::class, 'index'])->name('client.test');
     Route::post('test',[\App\Http\Controllers\TestController::class, 'store'])->name('client.test.store');
     Route::get('results/{result_id}',[\App\Http\Controllers\ResultController::class, 'show'])->name('client.results.show');
 

@@ -43,7 +43,7 @@
                                 </td>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $category->name }}</td>
-                                <td>{{url($category->slug)}}</td>
+                                <td>{{url('test/'.$category->slug)}}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-info">

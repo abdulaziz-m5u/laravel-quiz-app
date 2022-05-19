@@ -26,7 +26,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <h3 class="mx-auto text-center">  
-                    <a class="nav-link text-center" href="{{ route('client.test') }}">
+                    <a class="nav-link text-center" href="/test">
                         {{ __('Start Test') }}
                     </a></h3>
                 <h5 class="mx-auto text-center d-flex">  
